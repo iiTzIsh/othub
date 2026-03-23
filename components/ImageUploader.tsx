@@ -56,14 +56,14 @@ export default function ImageUploader({ onUpload, isLoading }: ImageUploaderProp
     <div>
       <h2 style={{
         fontSize: '1.125rem',
-        fontWeight: 900,
-        color: '#1f2937',
+        fontWeight: 700,
+        color: 'var(--text)',
         marginBottom: '1rem',
         display: 'flex',
         alignItems: 'center',
         gap: '0.5rem'
       }}>
-        <span style={{ fontSize: '1.5rem' }}>📤</span>
+        <span style={{ fontSize: '1.1rem', color: 'var(--primary)', lineHeight: 1 }}>↑</span>
         Upload Sheet
       </h2>
 
@@ -71,10 +71,10 @@ export default function ImageUploader({ onUpload, isLoading }: ImageUploaderProp
         <>
           <div style={{
             position: 'relative',
-            borderRadius: '0.5rem',
+            borderRadius: '0.75rem',
             overflow: 'hidden',
-            boxShadow: '0 20px 25px rgba(0,0,0,0.15)',
-            border: '2px solid #22c55e'
+            boxShadow: 'var(--shadow)',
+            border: '1px solid var(--border)'
           }}>
             <img
               src={preview}
@@ -95,24 +95,24 @@ export default function ImageUploader({ onUpload, isLoading }: ImageUploaderProp
                 position: 'absolute',
                 top: '0.5rem',
                 right: '0.5rem',
-                background: '#ef4444',
+                background: '#0f172a',
                 color: 'white',
                 borderRadius: '50%',
                 padding: '0.375rem',
                 border: 'none',
-                boxShadow: '0 10px 15px rgba(0,0,0,0.2)',
+                boxShadow: '0 8px 18px rgba(15, 23, 42, 0.25)',
                 fontSize: '1rem',
                 cursor: 'pointer',
-                fontWeight: 'bold',
+                fontWeight: 700,
                 transition: 'all 0.2s ease',
                 zIndex: 10
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = '#dc2626';
+                e.currentTarget.style.background = '#1e293b';
                 e.currentTarget.style.transform = 'scale(1.1)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.background = '#ef4444';
+                e.currentTarget.style.background = '#0f172a';
                 e.currentTarget.style.transform = 'scale(1)';
               }}
             >
@@ -121,7 +121,7 @@ export default function ImageUploader({ onUpload, isLoading }: ImageUploaderProp
             <div style={{
               position: 'absolute',
               inset: 0,
-              background: 'linear-gradient(to top, rgba(0,0,0,0.2), transparent)',
+              background: 'linear-gradient(to top, rgba(15, 23, 42, 0.25), transparent)',
               pointerEvents: 'none'
             }}></div>
             <div style={{
@@ -130,10 +130,10 @@ export default function ImageUploader({ onUpload, isLoading }: ImageUploaderProp
               left: 0,
               right: 0,
               padding: '0.75rem',
-              background: 'linear-gradient(to top, rgba(0,0,0,0.4), transparent)',
+              background: 'linear-gradient(to top, rgba(15, 23, 42, 0.55), transparent)',
               pointerEvents: 'none'
             }}>
-              <p style={{ color: '#86efac', fontSize: '0.875rem', fontWeight: 'bold' }}>✓ Image Uploaded</p>
+              <p style={{ color: '#e2e8f0', fontSize: '0.875rem', fontWeight: 600 }}>Image Uploaded</p>
             </div>
           </div>
 
@@ -141,30 +141,31 @@ export default function ImageUploader({ onUpload, isLoading }: ImageUploaderProp
           <div style={{
             marginTop: '1rem',
             padding: '1rem',
-            borderRadius: '0.5rem',
-            border: '1px solid #e5e7eb',
-            background: isLoading ? '#fef3c7' : '#dcfce7',
+            borderRadius: '0.75rem',
+            border: '1px solid var(--border)',
+            background: isLoading ? 'var(--surface-alt)' : 'var(--primary-soft)',
             display: 'flex',
             alignItems: 'center',
             gap: '0.75rem'
           }}>
             <div style={{
-              fontSize: '1.5rem',
-              animation: isLoading ? 'spin 1.5s linear infinite' : 'none'
+              fontSize: '1.1rem',
+              color: isLoading ? 'var(--text-muted)' : 'var(--primary)',
+              animation: isLoading ? 'spin 1.2s linear infinite' : 'none'
             }}>
-              {isLoading ? '⏳' : '✅'}
+              {isLoading ? '↻' : '✓'}
             </div>
             <div style={{ flex: 1 }}>
               <p style={{
-                color: isLoading ? '#92400e' : '#166534',
-                fontWeight: 'bold',
+                color: 'var(--text)',
+                fontWeight: 600,
                 fontSize: '0.875rem',
                 margin: '0 0 0.25rem 0'
               }}>
                 {isLoading ? 'Processing Image...' : 'Processing Complete!'}
               </p>
               <p style={{
-                color: isLoading ? '#b45309' : '#15803d',
+                color: 'var(--text-muted)',
                 fontSize: '0.75rem',
                 margin: 0
               }}>
@@ -177,30 +178,19 @@ export default function ImageUploader({ onUpload, isLoading }: ImageUploaderProp
               <div style={{
                 width: '4rem',
                 height: '0.25rem',
-                background: '#e5e7eb',
+                background: '#dbe3ef',
                 borderRadius: '9999px',
                 overflow: 'hidden'
               }}>
                 <div style={{
                   height: '100%',
-                  background: 'linear-gradient(to right, #f59e0b, #f97316)',
-                  animation: 'progress 2s ease-in-out infinite',
+                  background: 'linear-gradient(to right, #64748b, #0f172a)',
+                  animation: 'pulseBar 2s ease-in-out infinite',
                   width: '30%'
                 }}></div>
               </div>
             )}
           </div>
-
-          <style>{`
-            @keyframes spin {
-              from { transform: rotate(0deg); }
-              to { transform: rotate(360deg); }
-            }
-            @keyframes progress {
-              0%, 100% { width: 10%; }
-              50% { width: 90%; }
-            }
-          `}</style>
         </>
       ) : (
         <>
@@ -210,10 +200,10 @@ export default function ImageUploader({ onUpload, isLoading }: ImageUploaderProp
               cursor: isLoading ? 'not-allowed' : 'pointer',
               transition: 'all 0.3s ease',
               padding: '2rem',
-              border: `2px dashed ${isDragActive ? '#3b82f6' : '#d1d5db'}`,
+              border: `2px dashed ${isDragActive ? '#1e3a8a' : '#c7d2e4'}`,
               borderRadius: '0.75rem',
-              background: isDragActive ? '#eff6ff' : '#fafafa',
-              boxShadow: '0 10px 15px rgba(0,0,0,0.1)',
+              background: isDragActive ? '#eef2ff' : '#f8fafc',
+              boxShadow: '0 4px 14px rgba(15, 23, 42, 0.06)',
               transform: isDragActive ? 'scale(1.02)' : 'scale(1)',
               opacity: isLoading ? 0.6 : 1
             }}
@@ -235,35 +225,25 @@ export default function ImageUploader({ onUpload, isLoading }: ImageUploaderProp
             <div style={{ textAlign: 'center', padding: '1rem' }}>
               <div
                 style={{
-                  fontSize: '2.5rem',
+                  fontSize: '2rem',
                   marginBottom: '0.75rem',
                   transition: 'all 0.3s ease',
-                  animation: isLoading ? 'spin 1s linear infinite' : isDragActive ? 'bounce 0.5s infinite' : 'none'
+                  color: 'var(--primary)',
+                  animation: isLoading ? 'spin 1s linear infinite' : 'none'
                 }}
               >
-                {isLoading ? '⏳' : '📸'}
+                {isLoading ? '↻' : '□'}
               </div>
               <p style={{
-                color: '#1f2937',
-                fontWeight: 'bold',
+                color: 'var(--text)',
+                fontWeight: 600,
                 fontSize: '1rem',
                 marginBottom: '0.25rem'
               }}>
                 {isLoading ? 'Processing Image...' : 'Drop Image Here'}
               </p>
-              <p style={{ color: '#6b7280', fontSize: '0.875rem' }}>or click to browse</p>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.875rem' }}>or click to browse</p>
             </div>
-
-            <style>{`
-              @keyframes spin {
-                from { transform: rotate(0deg); }
-                to { transform: rotate(360deg); }
-              }
-              @keyframes bounce {
-                0%, 100% { transform: scale(1); }
-                50% { transform: scale(1.1); }
-              }
-            `}</style>
           </div>
 
           

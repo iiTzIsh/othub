@@ -95,56 +95,52 @@ export default function OTResults({ data, hourlyRate = 0 }: OTResultsProps) {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="ot-results" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
       {/* Summary Stats Cards */}
-      <div style={{
+      <div className="kpi-grid" style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
         gap: '1rem'
       }}>
         {/* Normal OT Card */}
         <div style={{
-          background: 'white',
-          border: '1px solid #dbeafe',
+          background: 'var(--surface)',
+          border: '1px solid var(--border)',
           borderRadius: '0.75rem',
           padding: '1.5rem',
-          boxShadow: '0 10px 15px rgba(0,0,0,0.07)',
+          boxShadow: '0 6px 16px rgba(15, 23, 42, 0.06)',
           transition: 'all 0.2s ease',
           cursor: 'pointer'
         }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.boxShadow = '0 20px 25px rgba(0,0,0,0.1)';
+            e.currentTarget.style.boxShadow = '0 12px 24px rgba(15, 23, 42, 0.1)';
             e.currentTarget.style.transform = 'translateY(-2px)';
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.boxShadow = '0 10px 15px rgba(0,0,0,0.07)';
+            e.currentTarget.style.boxShadow = '0 6px 16px rgba(15, 23, 42, 0.06)';
             e.currentTarget.style.transform = 'translateY(0)';
           }}
         >
           <p style={{
-            color: '#2563eb',
+            color: 'var(--text-muted)',
             fontSize: '0.875rem',
-            fontWeight: 'bold',
+            fontWeight: 600,
             textTransform: 'uppercase',
             letterSpacing: '0.05em',
-            marginBottom: '0.5rem',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.5rem'
+            marginBottom: '0.5rem'
           }}>
-            <span style={{ fontSize: '1.25rem' }}>📗</span>
             Normal OT
           </p>
-          <p style={{
-            fontSize: '3rem',
-            fontWeight: 900,
-            color: '#2563eb',
+          <p className="kpi-value" style={{
+            fontSize: 'clamp(2rem, 5vw, 3rem)',
+            fontWeight: 800,
+            color: 'var(--text)',
             marginBottom: '0.25rem'
           }}>
             {summary.totalNormalOT.toFixed(2)}
           </p>
           <p style={{
-            color: '#3b82f6',
+            color: 'var(--text-muted)',
             fontSize: '0.75rem',
             fontWeight: 600
           }}>hours</p>
@@ -152,47 +148,43 @@ export default function OTResults({ data, hourlyRate = 0 }: OTResultsProps) {
 
         {/* Double OT Card */}
         <div style={{
-          background: 'white',
-          border: '1px solid #fee2e2',
+          background: 'var(--surface)',
+          border: '1px solid var(--border)',
           borderRadius: '0.75rem',
           padding: '1.5rem',
-          boxShadow: '0 10px 15px rgba(0,0,0,0.07)',
+          boxShadow: '0 6px 16px rgba(15, 23, 42, 0.06)',
           transition: 'all 0.2s ease',
           cursor: 'pointer'
         }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.boxShadow = '0 20px 25px rgba(0,0,0,0.1)';
+            e.currentTarget.style.boxShadow = '0 12px 24px rgba(15, 23, 42, 0.1)';
             e.currentTarget.style.transform = 'translateY(-2px)';
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.boxShadow = '0 10px 15px rgba(0,0,0,0.07)';
+            e.currentTarget.style.boxShadow = '0 6px 16px rgba(15, 23, 42, 0.06)';
             e.currentTarget.style.transform = 'translateY(0)';
           }}
         >
           <p style={{
-            color: '#dc2626',
+            color: 'var(--text-muted)',
             fontSize: '0.875rem',
-            fontWeight: 'bold',
+            fontWeight: 600,
             textTransform: 'uppercase',
             letterSpacing: '0.05em',
-            marginBottom: '0.5rem',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.5rem'
+            marginBottom: '0.5rem'
           }}>
-            <span style={{ fontSize: '1.25rem' }}>🔴</span>
             Double OT
           </p>
-          <p style={{
-            fontSize: '3rem',
-            fontWeight: 900,
-            color: '#dc2626',
+          <p className="kpi-value" style={{
+            fontSize: 'clamp(2rem, 5vw, 3rem)',
+            fontWeight: 800,
+            color: 'var(--text)',
             marginBottom: '0.25rem'
           }}>
             {summary.totalDoubleOT.toFixed(2)}
           </p>
           <p style={{
-            color: '#ef4444',
+            color: 'var(--text-muted)',
             fontSize: '0.75rem',
             fontWeight: 600
           }}>hours</p>
@@ -200,47 +192,43 @@ export default function OTResults({ data, hourlyRate = 0 }: OTResultsProps) {
 
         {/* Total OT Card */}
         <div style={{
-          background: 'white',
-          border: '1px solid #dcfce7',
+          background: 'var(--surface)',
+          border: '1px solid var(--border)',
           borderRadius: '0.75rem',
           padding: '1.5rem',
-          boxShadow: '0 10px 15px rgba(0,0,0,0.07)',
+          boxShadow: '0 6px 16px rgba(15, 23, 42, 0.06)',
           transition: 'all 0.2s ease',
           cursor: 'pointer'
         }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.boxShadow = '0 20px 25px rgba(0,0,0,0.1)';
+            e.currentTarget.style.boxShadow = '0 12px 24px rgba(15, 23, 42, 0.1)';
             e.currentTarget.style.transform = 'translateY(-2px)';
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.boxShadow = '0 10px 15px rgba(0,0,0,0.07)';
+            e.currentTarget.style.boxShadow = '0 6px 16px rgba(15, 23, 42, 0.06)';
             e.currentTarget.style.transform = 'translateY(0)';
           }}
         >
           <p style={{
-            color: '#16a34a',
+            color: 'var(--text-muted)',
             fontSize: '0.875rem',
-            fontWeight: 'bold',
+            fontWeight: 600,
             textTransform: 'uppercase',
             letterSpacing: '0.05em',
-            marginBottom: '0.5rem',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.5rem'
+            marginBottom: '0.5rem'
           }}>
-            <span style={{ fontSize: '1.25rem' }}>✅</span>
             Total OT
           </p>
-          <p style={{
-            fontSize: '3rem',
-            fontWeight: 900,
-            color: '#16a34a',
+          <p className="kpi-value" style={{
+            fontSize: 'clamp(2rem, 5vw, 3rem)',
+            fontWeight: 800,
+            color: 'var(--primary)',
             marginBottom: '0.25rem'
           }}>
             {summary.totalOTHours.toFixed(2)}
           </p>
           <p style={{
-            color: '#22c55e',
+            color: 'var(--text-muted)',
             fontSize: '0.75rem',
             fontWeight: 600
           }}>hours</p>
@@ -250,22 +238,22 @@ export default function OTResults({ data, hourlyRate = 0 }: OTResultsProps) {
       {/* Details Card */}
       <div style={{
         width: '100%',
-        background: 'white',
-        border: '1px solid #e5e7eb',
+        background: 'var(--surface)',
+        border: '1px solid var(--border)',
         borderRadius: '0.75rem',
         padding: '1.5rem',
-        boxShadow: '0 10px 15px rgba(0,0,0,0.07)'
+        boxShadow: '0 6px 16px rgba(15, 23, 42, 0.06)'
       }}>
         <h2 style={{
           fontSize: '1.25rem',
-          fontWeight: 900,
-          color: '#1f2937',
+          fontWeight: 700,
+          color: 'var(--text)',
           marginBottom: '1.25rem',
           display: 'flex',
           alignItems: 'center',
           gap: '0.5rem'
         }}>
-          <span style={{ fontSize: '1.5rem' }}>📊</span>
+          <span style={{ color: 'var(--primary)' }}>◦</span>
           Summary Details
         </h2>
 
@@ -275,29 +263,29 @@ export default function OTResults({ data, hourlyRate = 0 }: OTResultsProps) {
             alignItems: 'center',
             justifyContent: 'space-between',
             padding: '0.75rem',
-            background: '#f3f4f6',
-            border: '1px solid #e5e7eb',
+            background: 'var(--surface-alt)',
+            border: '1px solid var(--border)',
             borderRadius: '0.5rem',
             transition: 'all 0.2s ease',
             cursor: 'pointer'
           }}
-            onMouseEnter={(e) => e.currentTarget.style.background = '#e5e7eb'}
-            onMouseLeave={(e) => e.currentTarget.style.background = '#f3f4f6'}
+            onMouseEnter={(e) => e.currentTarget.style.background = '#edf2f7'}
+            onMouseLeave={(e) => e.currentTarget.style.background = 'var(--surface-alt)'}
           >
             <span style={{
-              color: '#4b5563',
+              color: 'var(--text-muted)',
               fontWeight: 600,
               display: 'flex',
               alignItems: 'center',
               gap: '0.5rem'
             }}>
-              <span style={{ fontSize: '1.25rem' }}>📅</span>
+              <span style={{ color: 'var(--primary)' }}>•</span>
               Days Worked
             </span>
             <span style={{
               fontSize: '1.5rem',
-              fontWeight: 900,
-              color: '#2563eb'
+              fontWeight: 700,
+              color: 'var(--text)'
             }}>
               {summary.totalDays}
             </span>
@@ -308,29 +296,29 @@ export default function OTResults({ data, hourlyRate = 0 }: OTResultsProps) {
             alignItems: 'center',
             justifyContent: 'space-between',
             padding: '0.75rem',
-            background: '#f3f4f6',
-            border: '1px solid #e5e7eb',
+            background: 'var(--surface-alt)',
+            border: '1px solid var(--border)',
             borderRadius: '0.5rem',
             transition: 'all 0.2s ease',
             cursor: 'pointer'
           }}
-            onMouseEnter={(e) => e.currentTarget.style.background = '#e5e7eb'}
-            onMouseLeave={(e) => e.currentTarget.style.background = '#f3f4f6'}
+            onMouseEnter={(e) => e.currentTarget.style.background = '#edf2f7'}
+            onMouseLeave={(e) => e.currentTarget.style.background = 'var(--surface-alt)'}
           >
             <span style={{
-              color: '#4b5563',
+              color: 'var(--text-muted)',
               fontWeight: 600,
               display: 'flex',
               alignItems: 'center',
               gap: '0.5rem'
             }}>
-              <span style={{ fontSize: '1.25rem' }}>🔴</span>
+              <span style={{ color: 'var(--primary)' }}>•</span>
               Off/Sunday Days
             </span>
             <span style={{
               fontSize: '1.5rem',
-              fontWeight: 900,
-              color: '#dc2626'
+              fontWeight: 700,
+              color: 'var(--text)'
             }}>
               {summary.totalOffDays}
             </span>
@@ -341,28 +329,25 @@ export default function OTResults({ data, hourlyRate = 0 }: OTResultsProps) {
             alignItems: 'center',
             justifyContent: 'space-between',
             padding: '0.75rem',
-            background: 'linear-gradient(to right, #f0f9ff, #f0fdf4)',
-            border: '2px solid #06b6d4',
+            background: 'var(--primary-soft)',
+            border: '1px solid #c7d2fe',
             borderRadius: '0.5rem'
           }}>
             <span style={{
-              color: '#0c4a6e',
+              color: 'var(--text)',
               fontWeight: 600,
               fontSize: '1rem',
               display: 'flex',
               alignItems: 'center',
               gap: '0.5rem'
             }}>
-              <span style={{ fontSize: '1.25rem' }}>⏱️</span>
+              <span style={{ color: 'var(--primary)' }}>•</span>
               Total OT Hours
             </span>
-            <span style={{
-              fontSize: '1.875rem',
-              fontWeight: 900,
-              background: 'linear-gradient(to right, #22d3ee, #2563eb)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text'
+            <span className="summary-total" style={{
+              fontSize: 'clamp(1.3rem, 4.2vw, 1.875rem)',
+              fontWeight: 800,
+              color: 'var(--primary)'
             }}>
               {summary.totalOTHours.toFixed(2)} hrs
             </span>
@@ -372,16 +357,17 @@ export default function OTResults({ data, hourlyRate = 0 }: OTResultsProps) {
 
       {/* Export Button */}
       <button
+        className="export-btn"
         onClick={exportToCSV}
         style={{
           width: '100%',
           padding: '1rem 1.5rem',
-          background: 'linear-gradient(to right, #16a34a, #059669)',
+          background: 'linear-gradient(135deg, #0f172a, #1e3a8a)',
           color: 'white',
-          fontWeight: 900,
-          border: '1px solid rgba(34, 197, 94, 0.5)',
+          fontWeight: 700,
+          border: '1px solid rgba(30, 58, 138, 0.45)',
           borderRadius: '0.5rem',
-          boxShadow: '0 10px 15px rgba(0,0,0,0.1)',
+          boxShadow: '0 8px 20px rgba(15, 23, 42, 0.2)',
           transition: 'all 0.2s ease',
           transform: 'scale(1)',
           cursor: 'pointer',
@@ -392,17 +378,17 @@ export default function OTResults({ data, hourlyRate = 0 }: OTResultsProps) {
           gap: '0.75rem'
         }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.background = 'linear-gradient(to right, #15803d, #047857)';
-          e.currentTarget.style.boxShadow = '0 20px 25px rgba(0,0,0,0.15)';
-          e.currentTarget.style.transform = 'scale(1.02)';
+          e.currentTarget.style.background = 'linear-gradient(135deg, #0b1220, #1e40af)';
+          e.currentTarget.style.boxShadow = '0 12px 24px rgba(15, 23, 42, 0.25)';
+          e.currentTarget.style.transform = 'translateY(-1px)';
         }}
         onMouseLeave={(e) => {
-          e.currentTarget.style.background = 'linear-gradient(to right, #16a34a, #059669)';
-          e.currentTarget.style.boxShadow = '0 10px 15px rgba(0,0,0,0.1)';
+          e.currentTarget.style.background = 'linear-gradient(135deg, #0f172a, #1e3a8a)';
+          e.currentTarget.style.boxShadow = '0 8px 20px rgba(15, 23, 42, 0.2)';
           e.currentTarget.style.transform = 'scale(1)';
         }}
       >
-        <span style={{ fontSize: '1.5rem' }}>📥</span>
+        <span style={{ fontSize: '1.1rem' }}>↓</span>
         Export to CSV
       </button>
     </div>

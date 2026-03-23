@@ -74,10 +74,10 @@ export default function DataTable({ data, onChange, offDays }: DataTableProps) {
     return (
       <div style={{
         textAlign: 'center',
-        color: '#6b7280',
+        color: 'var(--text-muted)',
         padding: '2rem'
       }}>
-        <p>📊 No data yet. Upload an attendance sheet to get started.</p>
+        <p>No data yet. Upload an attendance sheet to get started.</p>
       </div>
     );
   }
@@ -86,72 +86,78 @@ export default function DataTable({ data, onChange, offDays }: DataTableProps) {
     <div>
       <h2 style={{
         fontSize: '1.25rem',
-        fontWeight: 900,
-        color: '#1f2937',
+        fontWeight: 700,
+        color: 'var(--text)',
         marginBottom: '1rem',
         display: 'flex',
         alignItems: 'center',
         gap: '0.5rem'
       }}>
-        <span style={{ fontSize: '1.5rem' , color: '#1f2937'}}>📋</span>
+        <span style={{ color: 'var(--primary)' }}>◦</span>
         Attendance Data
       </h2>
 
       <div style={{
-        background: 'white',
-        border: '1px solid #e5e7eb',
+        background: 'var(--surface)',
+        border: '1px solid var(--border)',
         borderRadius: '0.75rem',
         overflow: 'hidden',
-        boxShadow: '0 10px 15px rgba(0,0,0,0.1)'
+        boxShadow: '0 8px 18px rgba(15, 23, 42, 0.06)'
       }}>
         {/* Table Container */}
-        <div style={{ overflowX: 'auto' }}>
+        <div className="table-responsive" style={{ overflowX: 'auto' }}>
           <table style={{ width: '100%', fontSize: '0.875rem', borderCollapse: 'collapse' }}>
             <thead>
               <tr style={{
-                background: 'linear-gradient(to right, #374151, #1f2937)',
-                borderBottom: '2px solid #e5e7eb'
+                background: 'linear-gradient(135deg, #f8fafc, #eef2f7)',
+                borderBottom: '1px solid var(--border)'
               }}>
                 <th style={{
-                  padding: '1rem',
+                  padding: '0.75rem',
+                  width: '72px',
                   textAlign: 'left',
-                  fontWeight: 900,
-                  color: '#9ca3af',
+                  fontWeight: 700,
+                  color: 'var(--text-muted)',
                   fontSize: '0.875rem'
                 }}>Date</th>
                 <th style={{
-                  padding: '1rem',
+                  padding: '0.75rem',
+                  width: '96px',
                   textAlign: 'left',
-                  fontWeight: 900,
-                  color: '#9ca3af',
+                  fontWeight: 700,
+                  color: 'var(--text-muted)',
                   fontSize: '0.875rem'
                 }}>Time In</th>
                 <th style={{
-                  padding: '1rem',
+                  padding: '0.75rem',
+                  width: '96px',
                   textAlign: 'left',
-                  fontWeight: 900,
-                  color: '#9ca3af',
+                  fontWeight: 700,
+                  color: 'var(--text-muted)',
                   fontSize: '0.875rem'
                 }}>Time Out</th>
                 <th style={{
-                  padding: '1rem',
+                  padding: '0.75rem',
+                  width: '84px',
                   textAlign: 'center',
-                  fontWeight: 900,
-                  color: '#9ca3af',
+                  fontWeight: 700,
+                  color: 'var(--text-muted)',
                   fontSize: '0.875rem'
                 }}>Type</th>
                 <th style={{
-                  padding: '1rem',
+                  padding: '0.75rem',
+                  width: '104px',
                   textAlign: 'right',
-                  fontWeight: 900,
-                  color: '#2563eb',
+                  fontWeight: 700,
+                  color: 'var(--text-muted)',
                   fontSize: '0.875rem'
                 }}>Normal OT</th>
                 <th style={{
-                  padding: '1rem',
+                  padding: '0.75rem',
+                  width: '108px',
                   textAlign: 'right',
-                  fontWeight: 900,
-                  color: '#dc2626',
+                  fontWeight: 700,
+                  color: 'var(--text-muted)',
                   fontSize: '0.875rem'
                 }}>Double OT</th>
               </tr>
@@ -161,27 +167,27 @@ export default function DataTable({ data, onChange, offDays }: DataTableProps) {
                 <tr
                   key={idx}
                   style={{
-                    background: idx % 2 === 0 ? '#f9fafb' : 'white',
-                    borderBottom: '1px solid #e5e7eb',
+                    background: idx % 2 === 0 ? '#fbfcfe' : 'white',
+                    borderBottom: '1px solid var(--border)',
                     transition: 'background 0.2s ease'
                   }}
-                  onMouseEnter={(e) => e.currentTarget.style.background = '#f3f4f6'}
-                  onMouseLeave={(e) => e.currentTarget.style.background = idx % 2 === 0 ? '#f9fafb' : 'white'}
+                  onMouseEnter={(e) => e.currentTarget.style.background = '#f2f6fb'}
+                  onMouseLeave={(e) => e.currentTarget.style.background = idx % 2 === 0 ? '#fbfcfe' : 'white'}
                 >
                   <td style={{
-                    padding: '1rem',
+                    padding: '0.75rem',
                     fontWeight: 600,
-                    color: offDays.has(record.date) ? '#dc2626' : '#1f2937'
+                    color: offDays.has(record.date) ? 'var(--primary)' : 'var(--text)'
                   }}>
                     {record.date}
                   </td>
                   <td
                     style={{
-                      padding: '1rem',
+                      padding: '0.75rem',
                       cursor: 'pointer',
                       transition: 'all 0.2s ease',
-                      background: editingCell?.row === idx && editingCell?.col === 'timeIn' ? '#dbeafe' : undefined,
-                      borderLeft: editingCell?.row === idx && editingCell?.col === 'timeIn' ? '2px solid #2563eb' : undefined
+                      background: editingCell?.row === idx && editingCell?.col === 'timeIn' ? '#eef2ff' : undefined,
+                      borderLeft: editingCell?.row === idx && editingCell?.col === 'timeIn' ? '2px solid var(--primary)' : undefined
                     }}
                     onClick={() => handleCellClick(idx, 'timeIn')}
                   >
@@ -195,8 +201,8 @@ export default function DataTable({ data, onChange, offDays }: DataTableProps) {
                         autoFocus
                         style={{
                           width: '100%',
-                          background: '#f0f9ff',
-                          border: '1px solid #2563eb',
+                          background: '#f8fafc',
+                          border: '1px solid var(--primary)',
                           borderRadius: '0.25rem',
                           padding: '0.5rem',
                           fontFamily: 'monospace',
@@ -205,16 +211,16 @@ export default function DataTable({ data, onChange, offDays }: DataTableProps) {
                         placeholder="09:30"
                       />
                     ) : (
-                      <span style={{ fontFamily: 'monospace', color: '#4b5563' }}>{record.timeIn}</span>
+                      <span style={{ fontFamily: 'monospace', color: 'var(--text-muted)' }}>{record.timeIn}</span>
                     )}
                   </td>
                   <td
                     style={{
-                      padding: '1rem',
+                      padding: '0.75rem',
                       cursor: 'pointer',
                       transition: 'all 0.2s ease',
-                      background: editingCell?.row === idx && editingCell?.col === 'timeOut' ? '#dbeafe' : undefined,
-                      borderLeft: editingCell?.row === idx && editingCell?.col === 'timeOut' ? '2px solid #2563eb' : undefined
+                      background: editingCell?.row === idx && editingCell?.col === 'timeOut' ? '#eef2ff' : undefined,
+                      borderLeft: editingCell?.row === idx && editingCell?.col === 'timeOut' ? '2px solid var(--primary)' : undefined
                     }}
                     onClick={() => handleCellClick(idx, 'timeOut')}
                   >
@@ -228,8 +234,8 @@ export default function DataTable({ data, onChange, offDays }: DataTableProps) {
                         autoFocus
                         style={{
                           width: '100%',
-                          background: '#f0f9ff',
-                          border: '1px solid #2563eb',
+                          background: '#f8fafc',
+                          border: '1px solid var(--primary)',
                           borderRadius: '0.25rem',
                           padding: '0.5rem',
                           fontFamily: 'monospace',
@@ -238,17 +244,17 @@ export default function DataTable({ data, onChange, offDays }: DataTableProps) {
                         placeholder="18:30"
                       />
                     ) : (
-                      <span style={{ fontFamily: 'monospace', color: '#4b5563' }}>{record.timeOut}</span>
+                      <span style={{ fontFamily: 'monospace', color: 'var(--text-muted)' }}>{record.timeOut}</span>
                     )}
                   </td>
                   <td 
                     style={{
-                      padding: '1rem',
+                      padding: '0.75rem',
                       textAlign: 'center',
                       cursor: 'pointer',
                       transition: 'all 0.2s ease',
-                      background: editingCell?.row === idx && editingCell?.col === 'days' ? '#dbeafe' : undefined,
-                      borderLeft: editingCell?.row === idx && editingCell?.col === 'days' ? '2px solid #2563eb' : undefined
+                      background: editingCell?.row === idx && editingCell?.col === 'days' ? '#eef2ff' : undefined,
+                      borderLeft: editingCell?.row === idx && editingCell?.col === 'days' ? '2px solid var(--primary)' : undefined
                     }}
                     onClick={() => handleCellClick(idx, 'days')}
                   >
@@ -261,11 +267,11 @@ export default function DataTable({ data, onChange, offDays }: DataTableProps) {
                         }}
                         autoFocus
                         style={{
-                          background: '#f0f9ff',
-                          border: '2px solid #2563eb',
+                          background: '#f8fafc',
+                          border: '1px solid var(--primary)',
                           borderRadius: '0.25rem',
                           padding: '0.5rem',
-                          color: '#1f2937',
+                          color: 'var(--text)',
                           fontWeight: 600,
                           outline: 'none',
                           cursor: 'pointer',
@@ -281,31 +287,31 @@ export default function DataTable({ data, onChange, offDays }: DataTableProps) {
                           display: 'inline-block',
                           padding: '0.25rem 0.75rem',
                           borderRadius: '9999px',
-                          fontWeight: 'bold',
+                          fontWeight: 600,
                           fontSize: '0.75rem',
-                          background: record.days === '1' ? '#dcfce7' : '#fef3c7',
-                          color: record.days === '1' ? '#166534' : '#92400e',
-                          border: record.days === '1' ? '1px solid #86efac' : '1px solid #fcd34d',
+                          background: '#eef2f7',
+                          color: 'var(--text)',
+                          border: '1px solid var(--border)',
                           cursor: 'pointer'
                         }}
                       >
-                        {record.days === '1' ? '📅 Full' : '⏰ Half'}
+                        {record.days === '1' ? 'Full' : 'Half'}
                       </span>
                     )}
                   </td>
                   <td style={{
                     padding: '1rem',
                     textAlign: 'right',
-                    fontWeight: 900,
-                    color: '#2563eb'
+                    fontWeight: 700,
+                    color: 'var(--text)'
                   }}>
                     {record.normalOTHrs.toFixed(2)}h
                   </td>
                   <td style={{
                     padding: '1rem',
                     textAlign: 'right',
-                    fontWeight: 900,
-                    color: '#dc2626'
+                    fontWeight: 700,
+                    color: 'var(--text)'
                   }}>
                     {record.doubleOTHrs.toFixed(2)}h
                   </td>

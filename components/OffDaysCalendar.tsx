@@ -86,23 +86,23 @@ export default function OffDaysCalendar({ onOffDaysChange, month, year }: OffDay
     <div>
       <h2 style={{
         fontSize: '1.125rem',
-        fontWeight: 'bold',
-        color: '#1f2937',
+        fontWeight: 700,
+        color: 'var(--text)',
         marginBottom: '1rem',
         display: 'flex',
         alignItems: 'center',
         gap: '0.5rem'
       }}>
-        <span>📅</span>
+        <span style={{ color: 'var(--primary)' }}>◷</span>
         Off Days
       </h2>
 
       <div style={{
-        background: 'white',
-        border: '1px solid #e5e7eb',
-        borderRadius: '0.5rem',
+        background: 'var(--surface)',
+        border: '1px solid var(--border)',
+        borderRadius: '0.75rem',
         padding: '1rem',
-        boxShadow: '0 4px 6px rgba(0,0,0,0.07)'
+        boxShadow: '0 4px 14px rgba(15, 23, 42, 0.05)'
       }}>
         {/* Month Navigation */}
         <div style={{
@@ -115,23 +115,23 @@ export default function OffDaysCalendar({ onOffDaysChange, month, year }: OffDay
             onClick={prevMonth}
             style={{
               padding: '0.5rem 0.75rem',
-              background: '#dbeafe',
-              color: '#2563eb',
-              fontWeight: 'bold',
-              border: 'none',
+              background: 'var(--surface-alt)',
+              color: 'var(--text)',
+              fontWeight: 700,
+              border: '1px solid var(--border)',
               borderRadius: '0.25rem',
               cursor: 'pointer',
               transition: 'background 0.2s ease'
             }}
             title="Previous month"
-            onMouseEnter={(e) => e.currentTarget.style.background = '#bfdbfe'}
-            onMouseLeave={(e) => e.currentTarget.style.background = '#dbeafe'}
+            onMouseEnter={(e) => e.currentTarget.style.background = '#eef2f7'}
+            onMouseLeave={(e) => e.currentTarget.style.background = 'var(--surface-alt)'}
           >
             ←
           </button>
           <h3 style={{
-            fontWeight: 'bold',
-            color: '#1f2937',
+            fontWeight: 700,
+            color: 'var(--text)',
             textAlign: 'center',
             flex: 1,
             fontSize: '1rem'
@@ -142,17 +142,17 @@ export default function OffDaysCalendar({ onOffDaysChange, month, year }: OffDay
             onClick={nextMonth}
             style={{
               padding: '0.5rem 0.75rem',
-              background: '#dbeafe',
-              color: '#2563eb',
-              fontWeight: 'bold',
-              border: 'none',
+              background: 'var(--surface-alt)',
+              color: 'var(--text)',
+              fontWeight: 700,
+              border: '1px solid var(--border)',
               borderRadius: '0.25rem',
               cursor: 'pointer',
               transition: 'background 0.2s ease'
             }}
             title="Next month"
-            onMouseEnter={(e) => e.currentTarget.style.background = '#bfdbfe'}
-            onMouseLeave={(e) => e.currentTarget.style.background = '#dbeafe'}
+            onMouseEnter={(e) => e.currentTarget.style.background = '#eef2f7'}
+            onMouseLeave={(e) => e.currentTarget.style.background = 'var(--surface-alt)'}
           >
             →
           </button>
@@ -173,10 +173,10 @@ export default function OffDaysCalendar({ onOffDaysChange, month, year }: OffDay
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                fontWeight: 'bold',
-                color: '#4b5563',
+                fontWeight: 600,
+                color: 'var(--text-muted)',
                 fontSize: '0.75rem',
-                background: '#f3f4f6',
+                background: 'var(--surface-alt)',
                 borderRadius: '0.25rem'
               }}
             >
@@ -213,25 +213,23 @@ export default function OffDaysCalendar({ onOffDaysChange, month, year }: OffDay
                   if (isOffDay) {
                     buttonStyle = {
                       ...buttonStyle,
-                      background: '#ef4444',
+                      background: 'var(--primary)',
                       color: 'white',
-                      transform: 'scale(1.05)',
-                      boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
-                      fontWeight: 'bold'
+                      boxShadow: '0 4px 10px rgba(30, 58, 138, 0.25)',
+                      fontWeight: 700
                     };
                   } else if (isSunday) {
                     buttonStyle = {
                       ...buttonStyle,
-                      background: '#fbbf24',
-                      color: '#1f2937',
-                      boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
-                      fontWeight: 'bold'
+                      background: '#e2e8f0',
+                      color: '#0f172a',
+                      fontWeight: 700
                     };
                   } else {
                     buttonStyle = {
                       ...buttonStyle,
-                      background: '#f3f4f6',
-                      color: '#4b5563'
+                      background: 'var(--surface-alt)',
+                      color: 'var(--text-muted)'
                     };
                   }
                 }
@@ -245,12 +243,12 @@ export default function OffDaysCalendar({ onOffDaysChange, month, year }: OffDay
                     title={day ? `${MONTH_NAMES[displayMonth]} ${day}` : ''}
                     onMouseEnter={(e) => {
                       if (day && !isOffDay && !isSunday) {
-                        e.currentTarget.style.background = '#e5e7eb';
+                        e.currentTarget.style.background = '#edf2f7';
                       }
                     }}
                     onMouseLeave={(e) => {
                       if (day && !isOffDay && !isSunday) {
-                        e.currentTarget.style.background = '#f3f4f6';
+                        e.currentTarget.style.background = 'var(--surface-alt)';
                       }
                     }}
                   >
@@ -273,38 +271,38 @@ export default function OffDaysCalendar({ onOffDaysChange, month, year }: OffDay
           width: '100%',
           marginTop: '1rem',
           padding: '0.5rem 1rem',
-          background: '#fee2e2',
-          color: '#b91c1c',
-          fontWeight: 'bold',
-          border: 'none',
+          background: 'var(--surface-alt)',
+          color: 'var(--text)',
+          fontWeight: 600,
+          border: '1px solid var(--border)',
           borderRadius: '0.5rem',
           cursor: 'pointer',
           fontSize: '0.875rem',
           transition: 'background 0.2s ease'
         }}
         title="Clear all selected off days"
-        onMouseEnter={(e) => e.currentTarget.style.background = '#fecaca'}
-        onMouseLeave={(e) => e.currentTarget.style.background = '#fee2e2'}
+        onMouseEnter={(e) => e.currentTarget.style.background = '#eef2f7'}
+        onMouseLeave={(e) => e.currentTarget.style.background = 'var(--surface-alt)'}
       >
-        🗑️ Clear Off Days
+        Clear Off Days
       </button>
 
       {/* Legend */}
       <div style={{
         marginTop: '1rem',
         padding: '0.75rem',
-        background: '#f9fafb',
-        border: '1px solid #e5e7eb',
+        background: 'var(--surface-alt)',
+        border: '1px solid var(--border)',
         borderRadius: '0.5rem',
         fontSize: '0.75rem'
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-          <div style={{ width: '1rem', height: '1rem', borderRadius: '0.25rem', background: '#ef4444' }}></div>
-          <span style={{ color: '#4b5563' }}><strong>Red</strong> = Off Days (Double OT)</span>
+          <div style={{ width: '1rem', height: '1rem', borderRadius: '0.25rem', background: 'var(--primary)' }}></div>
+          <span style={{ color: 'var(--text-muted)' }}><strong>Blue</strong> = Off Days (Double OT)</span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          <div style={{ width: '1rem', height: '1rem', borderRadius: '0.25rem', background: '#fbbf24' }}></div>
-          <span style={{ color: '#4b5563' }}><strong>Yellow</strong> = Sundays</span>
+          <div style={{ width: '1rem', height: '1rem', borderRadius: '0.25rem', background: '#e2e8f0' }}></div>
+          <span style={{ color: 'var(--text-muted)' }}><strong>Gray</strong> = Sundays</span>
         </div>
       </div>
     </div>

@@ -90,120 +90,83 @@ export default function Home() {
   };
 
   return (
-    <main style={{ minHeight: '100vh', backgroundColor: '#1f2937' }}>
-      {/* Header */}
-      <div style={{
-        background: 'linear-gradient(to right, #2563eb, #06b6d4)',
-        padding: '2rem 1rem',
-        boxShadow: '0 10px 25px rgba(0,0,0,0.2)',
-        borderBottom: '4px solid #2563eb'
-      }}>
-        <div style={{ maxWidth: '80rem', margin: '0 auto' }}>
-          <h1 style={{ fontSize: '2.5rem', fontWeight: 900, color: 'white', marginBottom: '0.5rem' }}>⏰ OT Calculator</h1>
-          <p style={{ color: '#dbeafe', fontSize: '1rem', fontWeight: 600 }}>Smart Attendance & Overtime Analysis</p>
+    <main>
+      <header className="app-header">
+        <div className="app-header-inner">
+          <h1 className="app-title">OT Manager</h1>
+          <p className="app-subtitle">Attendance and overtime analysis workspace</p>
         </div>
-      </div>
+      </header>
 
-      {/* Content */}
-      <div style={{ maxWidth: '80rem', margin: '0 auto', padding: '2rem 1rem' }}>
+      <div className="app-container">
         {/* Error Alert */}
         {error && (
-          <div style={{
-            marginBottom: '1.5rem',
-            padding: '1rem',
-            backgroundColor: '#fee2e2',
-            borderLeft: '4px solid #dc2626',
-            borderRadius: '0.5rem',
-            display: 'flex',
-            gap: '0.75rem',
-            boxShadow: '0 10px 15px rgba(0,0,0,0.1)'
-          }}>
-            <span style={{ fontSize: '1.5rem' }}>⚠️</span>
+          <div className="alert">
+            <span style={{ fontSize: '1.2rem', lineHeight: 1 }}>!</span>
             <div style={{ flex: 1 }}>
-              <p style={{ color: '#991b1b', fontWeight: 600 }}>{error}</p>
+              <p style={{ fontWeight: 600 }}>{error}</p>
             </div>
             <button
               onClick={() => setError('')}
-              style={{ background: 'none', border: 'none', color: '#dc2626', fontSize: '1.25rem', cursor: 'pointer', fontWeight: 'bold' }}
+              style={{
+                background: 'none',
+                border: 'none',
+                color: '#b91c1c',
+                fontSize: '1.2rem',
+                cursor: 'pointer',
+                fontWeight: 700,
+                lineHeight: 1
+              }}
             >
               ✕
             </button>
           </div>
         )}
 
-        {/* Grid Layout */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
+        <div className="layout-grid">
           {/* Sidebar */}
-          <div style={{ position: 'sticky', top: '1.5rem' }}>
-            {/* Upload Card */}
-            <div style={{
-              background: 'white',
-              borderRadius: '0.5rem',
-              padding: '1.5rem',
-              boxShadow: '0 10px 15px rgba(0,0,0,0.1)',
-              marginBottom: '1.5rem'
-            }}>
-              <ImageUploader onUpload={handleImageUpload} isLoading={isLoading} />
-            </div>
+          <aside className="sidebar">
+            <div className="sidebar-stack">
+              <div className="panel">
+                <ImageUploader onUpload={handleImageUpload} isLoading={isLoading} />
+              </div>
 
-            {/* Calendar Card */}
-            <div style={{
-              background: 'white',
-              borderRadius: '0.5rem',
-              padding: '1.5rem',
-              boxShadow: '0 10px 15px rgba(0,0,0,0.1)'
-            }}>
-              <OffDaysCalendar onOffDaysChange={handleOffDaysChange} month={month} year={year} />
+              <div className="panel">
+                <OffDaysCalendar onOffDaysChange={handleOffDaysChange} month={month} year={year} />
+              </div>
             </div>
-          </div>
+          </aside>
 
           {/* Main Content */}
-          <div style={{ gridColumn: 'span 2' }}>
+          <section className="main-stack">
             {/* Table */}
-            <div style={{
-              background: 'white',
-              borderRadius: '0.5rem',
-              padding: '1.5rem',
-              boxShadow: '0 10px 15px rgba(0,0,0,0.1)'
-            }}>
+            <div className="panel">
               <DataTable data={data} onChange={handleDataChange} offDays={offDays} />
             </div>
 
             {/* Results */}
             {data.length > 0 && (
               <>
-                <div style={{ borderTop: '2px solid #e5e7eb', margin: '1.5rem 0' }}></div>
+                <div className="section-divider"></div>
                 <OTResults data={data} hourlyRate={0} />
               </>
             )}
 
             {/* Empty State */}
             {data.length === 0 && (
-              <div style={{
-                textAlign: 'center',
-                padding: '4rem 1rem',
-                backgroundColor: '#f3f4f6',
-                borderRadius: '0.5rem',
-                border: '2px dashed #9ca3af'
-              }}>
-                <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>📊</div>
-                <h3 style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#1f2937', marginBottom: '0.5rem' }}>No Data Yet</h3>
-                <p style={{ color: '#6b7280' }}>Upload an attendance sheet to get started</p>
+              <div className="empty-state">
+                <h3 style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--text)', marginBottom: '0.4rem' }}>
+                  No Data Yet
+                </h3>
+                <p>Upload an attendance sheet to start the analysis.</p>
               </div>
             )}
-          </div>
+          </section>
         </div>
 
         {/* Footer */}
         {data.length > 0 && (
-          <div style={{
-            marginTop: '3rem',
-            paddingTop: '2rem',
-            borderTop: '1px solid #d1d5db',
-            textAlign: 'center'
-          }}>
-            <p style={{ color: '#9ca3af', fontSize: '0.75rem' }}>HR Team</p>
-          </div>
+          <p className="footer-note">HR Team Workspace</p>
         )}
       </div>
     </main>
