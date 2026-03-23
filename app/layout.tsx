@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "OT Manager",
+  title: "OT Desk",
   description: "Professional attendance and overtime analysis workspace",
 };
 

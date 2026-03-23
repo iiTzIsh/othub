@@ -93,7 +93,7 @@ export default function Home() {
     <main>
       <header className="app-header">
         <div className="app-header-inner">
-          <h1 className="app-title">OT Manager</h1>
+          <h1 className="app-title">OT Desk</h1>
           <p className="app-subtitle">Attendance and overtime analysis workspace</p>
         </div>
       </header>
