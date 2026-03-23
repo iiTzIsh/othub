@@ -159,14 +159,6 @@ export default function Home() {
 
           {/* Main Content */}
           <div style={{ gridColumn: 'span 2' }}>
-            {/* Results */}
-            {data.length > 0 && (
-              <>
-                <OTResults data={data} hourlyRate={0} />
-                <div style={{ borderTop: '2px solid #e5e7eb', margin: '1.5rem 0' }}></div>
-              </>
-            )}
-
             {/* Table */}
             <div style={{
               background: 'white',
@@ -176,6 +168,14 @@ export default function Home() {
             }}>
               <DataTable data={data} onChange={handleDataChange} offDays={offDays} />
             </div>
+
+            {/* Results */}
+            {data.length > 0 && (
+              <>
+                <div style={{ borderTop: '2px solid #e5e7eb', margin: '1.5rem 0' }}></div>
+                <OTResults data={data} hourlyRate={0} />
+              </>
+            )}
 
             {/* Empty State */}
             {data.length === 0 && (
